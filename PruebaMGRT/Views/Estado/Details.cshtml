@@ -1,0 +1,30 @@
+﻿@model PruebaMGRT.Models.Estado
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center">State Details</h1>
+<hr />
+<div>
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Name State
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NombreEstado)
+        </dd>
+        <dt class = "col-sm-2">
+            Creation Date
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaCreacion)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index" class="btn btn-primary"><i class="fa-solid fa-chevron-left text-dark"></i> Back to List</a>
+     &nbsp;
+    <a asp-action="Edit" class="btn btn-primary" asp-route-id="@Model?.Id"><i class="fa-solid fa-pen-to-square text-dark"></i> Edit</a> 
+</div>

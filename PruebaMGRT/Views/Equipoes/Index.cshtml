@@ -1,0 +1,78 @@
+﻿@model IEnumerable<PruebaMGRT.Models.Equipo>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet"/>
+}
+
+<h1 class="text-center">List of Existing Equipment</h1>
+<hr />
+<p>
+   <a asp-action="Create" class="btn btn-primary"><i class="fa-solid fa-plus text-dark"></i> Create New</a>
+</p>
+<table class="table" id="tableDemo">
+    <thead>
+        <tr>
+            <th>
+                Identifier
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Country
+            </th>
+            <th>
+                Player Name
+            </th>
+            <th>
+               Creation Date
+            </th>
+            <th>
+                State
+            </th>
+            <th>
+                Functionalities
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pais)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreJugador)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCreacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado.Id)
+            </td>
+            <td>
+               <a class="btn btn-primary btn-xs" title="Edit" href="@Url.Action("Edit", "Equipoes", new {@item.Id})"><i class="fa-solid fa-pen-to-square fa-xs text-dark"></i></a>
+               <a class="btn btn-info btn-xs" title="Details" href="@Url.Action("Details", "Equipoes", new {@item.Id})"><i class="fa-solid fa-pen-clip fa-xs text-dark"></i></a>
+               <a class="btn btn-danger btn-xs" title="Delete" href="@Url.Action("Delete", "Equipoes", new {@item.Id})"><i class="fa-solid fa-trash-can fa-xs text-dark"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@section Scripts{
+    <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $('#tableDemo').DataTable();
+    </script>
+}
